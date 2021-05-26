@@ -7,23 +7,30 @@ ifstream fin("bac.txt");
 // ofstream fout("out.txt");
 #define min(a,b) ((a) < (b) ? (a) : (b))
 #define max(a,b) ((a) > (b) ? (a) : (b))
+bool oky(int a)
+{
+    bool ok = true;
+    while(a > 9)
+    {
+        if(a % 10 != (a/10)%10)
+            ok=false;
+        a/=10;
+    }
+    return ok;
+}
 void identice(int a , int b){
     int cnt = 0;
     for(int i = a ; i <= b ; ++i){
-        bool ok = true;
-        while(a > 9){
-            if(a % 10 != (a/10)%10)
-                ok=false;
-            a/=10;
-        }
-        if(ok)
+        if(oky(i))
             cout << i << ' ' , cnt++;
     }
+    cout<<cnt;
     if(!cnt)
         cout << "nu exista";
 }
 int main(){
-     int n , m , x , mini , maxi , y , ok = 0 , ind = -1;
+    identice(500,1255);
+    int n , m , x , mini , maxi , y , ok = 0 , ind = -1;
     fin >> n >> m;
     fin >> mini;
     for(int i = 2 ; i <= n ; ++i)
